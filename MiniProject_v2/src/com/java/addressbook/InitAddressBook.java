@@ -30,8 +30,8 @@ public class InitAddressBook {
 			writer = new FileWriter(f);
 			
 			for(int i=0; i<initInfo.length; i++) {
-				initList(initInfo[i]);
-				writer.write(initInfo[i]);
+				initList(initInfo[i]);		// 초기 정보 리스트 초기화
+				writer.write(initInfo[i] + "\n");	// 생성 된 파일에 초기 정보 초기화
 			}
 			
 			//내부 버퍼 비우기
@@ -47,25 +47,19 @@ public class InitAddressBook {
 			catch(Exception e) {
 				
 			}
-		}
-		
-		
-		
-		
-		
-		
+		}	
 	}
 	
-	public static InitAddressBook getAddressBook() {
+	public static InitAddressBook getAddressBook() {		// 싱글톤 패턴 인스턴스 받아오는 메서드
 		return initAddressBook;
 	}
 	
-	public static List<Address> getPhone() {
+	public static List<Address> getAddressList() {			// 리스트 불러오기
 		return addressBook;
 	}
 	
-	public void initList(String s) {
+	public void initList(String s) {						// 초기 정보 리스트 초기화 메서드
 		String[] ss = s.split(",");
-		addressBook.add(new Address(ss[0], ss[1], ss[2].trim()));
+		addressBook.add(new Address(ss[0], ss[1], ss[2]));
 	}
 }
